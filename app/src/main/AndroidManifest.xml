@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymquizapp">
         <activity
+            android:name=".QuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="fullSensor">

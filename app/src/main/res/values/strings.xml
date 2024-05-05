@@ -2,4 +2,6 @@
     <string name="app_name">gymquizapp</string>
     <string name="dumbbell_icon_description">dumbbell icon description</string>
     <string name="login_start_button_description">login start button description</string>
+    <string name="return_icon_description">return icon</string>
+    <string name="question_image_description">question image</string>
 </resources>

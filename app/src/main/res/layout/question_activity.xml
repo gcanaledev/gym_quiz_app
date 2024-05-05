@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionActivity"
+    android:background="@color/secondary"
+    android:orientation="vertical"
+    android:gravity="">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_header"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="8dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/return_icon_description"
+            android:src="@drawable/ic_back"
+            app:tint="@color/quaternary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="questionTitle  --  0/0"
+            android:gravity="center"
+            android:paddingEnd="36dp"
+            android:paddingStart="0dp"
+            android:theme="@style/title_h2"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_rounded_tertiary"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="questionText"
+                    android:theme="@style/title_h2"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="24dp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/question_image_description"
+                    tools:src="@drawable/img_abs_workout"
+                    android:layout_marginHorizontal="24dp"
+                    android:paddingVertical="40dp">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="12dp"
+                    android:padding="8dp"
+                    tools:text="questionOption"
+                    android:background="@drawable/bg_rounded_quaternary"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="12dp"
+                    android:padding="8dp"
+                    tools:text="questionOption"
+                    android:background="@drawable/bg_rounded_quaternary"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="12dp"
+                    android:padding="8dp"
+                    tools:text="questionOption"
+                    android:background="@drawable/bg_rounded_quaternary"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="12dp"
+                    android:padding="8dp"
+                    tools:text="questionOption"
+                    android:background="@drawable/bg_rounded_quaternary"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/primary"
+                android:theme="@style/title_h2"
+                tools:text="confirmButton"
+                app:cornerRadius="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>
