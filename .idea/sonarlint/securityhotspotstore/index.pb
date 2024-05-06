@@ -9,3 +9,5 @@ i
 9app/src/main/java/com/example/gymquizapp/LoginActivity.kt,a\f\afa48330cb831b6a07390f08f6f49ed4cb72c9eb
 l
 <app/src/main/java/com/example/gymquizapp/QuestionActivity.kt,6\e\6e6b8ba12e32791edfbdd1f736060ddcad3dd782
+j
+:app/src/main/java/com/example/gymquizapp/ResultActivity.kt,0\f\0fe038975dc34f80c859f40d94a6e9b5885615aa

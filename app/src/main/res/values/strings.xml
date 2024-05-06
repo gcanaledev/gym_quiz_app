@@ -4,4 +4,9 @@
     <string name="login_start_button_description">login start button description</string>
     <string name="return_icon_description">return icon</string>
     <string name="question_image_description">question image</string>
+    <string name="resultTitle">Parabéns! Você concluiu o Canale\'s Gym Quiz!</string>
+    <string name="resultIconDescription">result icon description.</string>
+    <string name="resultSummary">De acordo com nossos calculos... vocé é um...</string>
+    <string name="finish">Finalizar</string>
+    <string name="tryAgain">Retentar</string>
 </resources>
