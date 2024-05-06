@@ -9,4 +9,12 @@
     <string name="resultSummary">De acordo com nossos calculos... vocé é um...</string>
     <string name="finish">Finalizar</string>
     <string name="tryAgain">Retentar</string>
+    <string name="welcomeTitle">Bem vindo(a) ao Canale\'s Gym Quiz!</string>
+    <string name="loginCardTitle">Para iniciar o quiz é preciso informar seu nível de experiência na área</string>
+
+    <string-array name="user_experience_levels">
+        <item>Starter</item>
+        <item>Intermediary</item>
+        <item>Bodybuilder</item>
+    </string-array>
 </resources>

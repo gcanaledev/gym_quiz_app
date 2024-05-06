@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/secondary"
-    tools:context=".ResultActivity">
+    tools:context=".activity.ResultActivity">
 
     <TextView
         android:layout_width="match_parent"

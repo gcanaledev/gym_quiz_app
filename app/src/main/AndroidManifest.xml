@@ -11,13 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymquizapp">
         <activity
-            android:name=".ResultActivity"
+            android:name=".activity.ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestionActivity"
+            android:name=".activity.QuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
             android:screenOrientation="fullSensor">
             <intent-filter>
