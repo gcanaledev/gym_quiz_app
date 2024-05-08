@@ -11,6 +11,15 @@
     <string name="tryAgain">Retentar</string>
     <string name="welcomeTitle">Bem vindo(a) ao Canale\'s Gym Quiz!</string>
     <string name="loginCardTitle">Para iniciar o quiz é preciso informar seu nível de experiência na área</string>
+    <string name="warning_message_icon_description">warning message icon description</string>
+    <string name="warning">Aviso!</string>
+    <string name="success">Sucesso!</string>
+    <string name="capital_resume">PROSSEGUIR</string>
+    <string name="capital_okay">OK</string>
+    <string name="warning_message_body">As perguntas do quiz podem aprensentar certa dificuldade de acordo com seu nível de experiência no assunto...</string>
+    <string name="warning_message_title">Deseja continuar?</string>
+    <string name="success_message_title">Você vai se dar bem!</string>
+    <string name="success_message_body">Com a sua grande experiência no assunto, vai conseguir tirar de letra!</string>
 
     <string-array name="user_experience_levels">
         <item>Starter</item>

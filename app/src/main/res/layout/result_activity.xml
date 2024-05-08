@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="40dp"
-            android:theme="@style/light_gray_title_h1"
+            android:theme="@style/quaternary_title_h1"
             tools:text="0 de 0" />
 
 
@@ -42,14 +42,14 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:textAlignment="center"
-            android:theme="@style/title_h2"
+            android:theme="@style/quaternary_title_h2"
             tools:text="@string/resultSummary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:theme="@style/light_gray_title_h1"
+            android:theme="@style/quaternary_title_h1"
             tools:text="Bodybuilder!" />
 
         <ImageView

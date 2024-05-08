@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
+
+    <LinearLayout
+        android:id="@+id/dialogHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:background="@color/message_warning_yellow"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/dialogHeaderIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/warning_message_icon_description"
+            tools:src="@drawable/ic_warning"/>
+
+        <TextView
+            android:id="@+id/dialogHeaderTitle"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="messageHeaderTitle"
+            android:theme="@style/black_title_h2"
+            android:textAlignment="center"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/dialogBodyMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:maxLines="5"
+            android:theme="@style/black_title_h3"
+            tools:text="messageBody"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/dialogConfirmationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_gravity="end"
+            tools:text="OK"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 </LinearLayout>

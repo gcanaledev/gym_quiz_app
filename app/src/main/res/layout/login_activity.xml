@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/loginCardTitle"
                 android:textAlignment="center"
-                style="@style/title_h2"
+                style="@style/quaternary_title_h2"
                 android:layout_marginBottom="32dp"/>
 
                 <Spinner

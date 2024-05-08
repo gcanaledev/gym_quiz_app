@@ -31,7 +31,7 @@
             android:gravity="center"
             android:paddingEnd="36dp"
             android:paddingStart="0dp"
-            android:theme="@style/title_h2"/>
+            android:theme="@style/quaternary_title_h2"/>
     </LinearLayout>
 
 
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="questionText"
-                    android:theme="@style/title_h2"
+                    android:theme="@style/quaternary_title_h2"
                     android:gravity="center"
                     android:layout_marginHorizontal="24dp"/>
 
@@ -114,7 +114,7 @@
                 android:paddingVertical="12dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/primary"
-                android:theme="@style/title_h2"
+                android:theme="@style/quaternary_title_h2"
                 tools:text="confirmButton"
                 app:cornerRadius="8dp"/>
 

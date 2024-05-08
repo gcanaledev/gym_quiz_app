@@ -1,11 +1,14 @@
 package com.example.gymquizapp.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.example.gymquizapp.enumerator.GymExperienceLevel
 import com.example.gymquizapp.R
 import com.example.gymquizapp.databinding.LoginActivityBinding
+import com.example.gymquizapp.dialog.FeedbackMessageDialog
+import com.example.gymquizapp.enumerator.MessageType
 
 class LoginActivity : AppCompatActivity() {
 
@@ -18,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 
         populateExperienceSpinner()
 
-        viewBinding.playButton.setOnClickListener {  }
+        viewBinding.playButton.setOnClickListener { playButtonOnClicked() }
     }
 
     private fun populateExperienceSpinner(){
@@ -40,14 +43,29 @@ class LoginActivity : AppCompatActivity() {
             viewBinding.experienceSpinner.selectedItem.toString())
 
         when (userChosenGymExperience){
-            GymExperienceLevel.Starter ->
-                GymExperienceLevel.Intermediary
 
-            ->
-                GymExperienceLevel.Bodybuilder
+            GymExperienceLevel.Starter,
+            GymExperienceLevel.Intermediary -> {
 
-            ->
+                FeedbackMessageDialog(MessageType.Warning, this)
+                    .showFeedbackMessageDialog(
+                        getString(R.string.warning_message_body),
+                        { navigateToQuestionActivity() },
+                        getString(R.string.warning_message_title))
+            }
+
+            GymExperienceLevel.Bodybuilder -> {
+
+                FeedbackMessageDialog(MessageType.Success, this)
+                    .showFeedbackMessageDialog(
+                        getString(R.string.success_message_body),
+                        { navigateToQuestionActivity() },
+                        getString(R.string.success_message_title))
+            }
         }
+    }
 
+    private fun navigateToQuestionActivity() {
+        startActivity(Intent(this, QuestionActivity::class.java))
     }
 }
