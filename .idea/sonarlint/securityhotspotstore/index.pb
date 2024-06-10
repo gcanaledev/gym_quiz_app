@@ -17,3 +17,9 @@ y
 Iapp/src/main/java/com/example/gymquizapp/enumerator/GymExperienceLevel.kt,0\c\0c053be5aac46fc7b58b0036a4ecd0311d0c044f
 r
 Bapp/src/main/java/com/example/gymquizapp/enumerator/MessageType.kt,4\d\4d09325fc8a672c98ed5e3761ba18138d1613df3
+k
+;app/src/main/java/com/example/gymquizapp/entity/Question.kt,b\0\b07f43dd519976be996fdc5d4d65d4fc9cec0c4d
+u
+Eapp/src/main/java/com/example/gymquizapp/provider/QuestionProvider.kt,a\e\ae9c0bd4bca88e857f2d3e674e049ffca8f2b0c9
+l
+<app/src/main/java/com/example/gymquizapp/FunctionResponse.kt,8\a\8ae0f9f2855548903c2e7d4594a86794ab90e6d8
