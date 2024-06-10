@@ -15,7 +15,7 @@
         android:gravity="center"
         tools:background="@color/message_warning_yellow"
         android:paddingVertical="8dp"
-        android:paddingHorizontal="16dp">
+        android:paddingHorizontal="32dp">
 
         <ImageView
             android:id="@+id/dialogHeaderIcon"
@@ -38,28 +38,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp">
+        android:paddingTop="12dp">
 
         <TextView
             android:id="@+id/dialogBodyMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
+            android:layout_marginHorizontal="48dp"
             android:maxLines="5"
             android:theme="@style/black_title_h3"
             tools:text="messageBody"
             android:textAlignment="center"/>
 
-        <Button
-            android:id="@+id/dialogConfirmationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_gravity="end"
-            tools:text="OK"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
+            <Button
+                android:id="@+id/denialButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="@string/quit"
+                android:textSize="14sp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:layout_alignParentStart="true"
+                android:textFontWeight="700"/>
+
+            <Button
+                android:id="@+id/confirmationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:text="@string/proceed"
+                android:textSize="14sp"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

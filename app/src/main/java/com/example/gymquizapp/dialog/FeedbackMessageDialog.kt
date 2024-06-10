@@ -3,6 +3,7 @@ package com.example.gymquizapp.dialog
 import android.app.Activity
 import android.app.AlertDialog
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -16,41 +17,63 @@ class FeedbackMessageDialog(
     private val messageType: MessageType,
     private val parentActivity: Activity) {
 
-    private lateinit var alertDialog: AlertDialog
+    private var alertDialog: AlertDialog
+    private var viewBinding: FeedbackMessageDialogBinding = FeedbackMessageDialogBinding.inflate(parentActivity.layoutInflater)
+
+    init {
+
+        alertDialog = AlertDialog.Builder(parentActivity).let {
+
+            it.setView(viewBinding.root)
+            it.create()
+        }
+    }
 
     fun showFeedbackMessageDialog(
-        messageBody: String,
-        confirmationButtonAction: () -> Unit,
         messageTitle: String? = null,
-        confirmationButtonText: String? = null){
+        messageBody: String? = null,
+        denialButtonVisible: Boolean = false,
+        confirmationButtonAction: () -> Unit = { },
+        denialButtonAction: () -> Unit = { }){
 
-        alertDialog = createFeedbackMessageDialog(messageBody,
-                                                 messageTitle,
-                                                 confirmationButtonAction,
-                                                 confirmationButtonText)
-
-        alertDialog.show()
+        createFeedbackMessageDialog(messageTitle,
+                                    messageBody,
+                                    denialButtonVisible,
+                                    confirmationButtonAction,
+                                    denialButtonAction).show()
     }
 
     private fun createFeedbackMessageDialog(
-        messageBody: String,
         messageTitle: String?,
+        messageBody: String?,
+        denialButtonVisible: Boolean = false,
         confirmationButtonAction: () -> Unit,
-        confirmationButtonText: String?): AlertDialog{
+        denialButtonAction: () -> Unit): AlertDialog{
 
-            val viewBinding = FeedbackMessageDialogBinding.inflate(parentActivity.layoutInflater)
-            val icon = ContextCompat.getDrawable(parentActivity, getHeaderIconId())
+        val icon = ContextCompat.getDrawable(parentActivity, getHeaderIconId())
+        viewBinding.dialogHeaderIcon.setImageDrawable(icon)
 
-            viewBinding.dialogHeader.background = getBackgroundColor()
-            viewBinding.dialogHeaderIcon.setImageDrawable(icon)
-            viewBinding.dialogHeaderTitle.text = messageTitle ?: getHeaderTitleText()
-            viewBinding.dialogBodyMessage.text = messageBody
-            viewBinding.dialogConfirmationButton.setOnClickListener { confirmationButtonAction() }
-            viewBinding.dialogConfirmationButton.text = confirmationButtonText ?: getConfirmationButtonText()
+        viewBinding.dialogHeaderTitle.text = messageTitle ?: getDefaultHeaderTitleText()
 
-            val alertDialogBuilder = AlertDialog.Builder(parentActivity)
-            alertDialogBuilder.setView(viewBinding.root)
-            return alertDialogBuilder.create()
+        viewBinding.dialogBodyMessage.text = messageBody ?: getDefaultMessageBodyText()
+
+        viewBinding.dialogHeader.background = getBackgroundColor()
+
+        viewBinding.confirmationButton.setOnClickListener { confirmationButtonAction(); alertDialog.dismiss()}
+
+        if (denialButtonVisible)
+            viewBinding.denialButton.setOnClickListener { denialButtonAction(); alertDialog.dismiss() }
+        else
+            viewBinding.denialButton.visibility = View.GONE
+
+        return alertDialog
+    }
+
+    private fun getDefaultHeaderTitleText(): String {
+        return when (messageType){
+            MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.warning)
+            MessageType.Success -> ContextCompat.getString(parentActivity, R.string.success)
+        }
     }
 
     private fun getBackgroundColor(): Drawable? {
@@ -59,17 +82,11 @@ class FeedbackMessageDialog(
             MessageType.Success -> ContextCompat.getDrawable(parentActivity, R.color.message_success_green)
         }
     }
-    private fun getConfirmationButtonText(): String {
-        return when (messageType){
-            MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.capital_resume)
-            MessageType.Success -> ContextCompat.getString(parentActivity, R.string.capital_okay)
-        }
-    }
 
-    private fun getHeaderTitleText(): String {
+    private fun getDefaultMessageBodyText(): String {
         return when (messageType){
-            MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.warning)
-            MessageType.Success -> ContextCompat.getString(parentActivity, R.string.success)
+            MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.careful)
+            MessageType.Success -> ContextCompat.getString(parentActivity, R.string.hit)
         }
     }
 

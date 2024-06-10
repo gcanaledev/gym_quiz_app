@@ -49,18 +49,20 @@ class LoginActivity : AppCompatActivity() {
 
                 FeedbackMessageDialog(MessageType.Warning, this)
                     .showFeedbackMessageDialog(
+                        getString(R.string.warning_message_title),
                         getString(R.string.warning_message_body),
+                        denialButtonVisible = true,
                         { navigateToQuestionActivity() },
-                        getString(R.string.warning_message_title))
+                        { finishAffinity() })
             }
 
             GymExperienceLevel.Bodybuilder -> {
 
                 FeedbackMessageDialog(MessageType.Success, this)
                     .showFeedbackMessageDialog(
+                        getString(R.string.success_message_title),
                         getString(R.string.success_message_body),
-                        { navigateToQuestionActivity() },
-                        getString(R.string.success_message_title))
+                        confirmationButtonAction = { navigateToQuestionActivity() })
             }
         }
     }

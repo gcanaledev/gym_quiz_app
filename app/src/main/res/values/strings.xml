@@ -20,6 +20,10 @@
     <string name="warning_message_title">Deseja continuar?</string>
     <string name="success_message_title">Você vai se dar bem!</string>
     <string name="success_message_body">Com a sua grande experiência no assunto, vai conseguir tirar de letra!</string>
+    <string name="quit">Desistir</string>
+    <string name="proceed">Prosseguir</string>
+    <string name="careful">Cuidado!</string>
+    <string name="hit">Sucesso</string>
 
     <string-array name="user_experience_levels">
         <item>Starter</item>
