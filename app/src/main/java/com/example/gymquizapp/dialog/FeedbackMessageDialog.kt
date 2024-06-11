@@ -69,6 +69,7 @@ class FeedbackMessageDialog(
         return when (messageType){
             MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.warning)
             MessageType.Success -> ContextCompat.getString(parentActivity, R.string.success)
+            MessageType.Error -> ContextCompat.getString(parentActivity, R.string.error)
         }
     }
 
@@ -76,6 +77,7 @@ class FeedbackMessageDialog(
         return when (messageType){
             MessageType.Warning -> ContextCompat.getDrawable(parentActivity, R.color.message_warning_yellow)
             MessageType.Success -> ContextCompat.getDrawable(parentActivity, R.color.message_success_green)
+            MessageType.Error -> ContextCompat.getDrawable(parentActivity, R.color.message_error_red)
         }
     }
 
@@ -83,6 +85,7 @@ class FeedbackMessageDialog(
         return when (messageType){
             MessageType.Warning -> ContextCompat.getString(parentActivity, R.string.careful)
             MessageType.Success -> ContextCompat.getString(parentActivity, R.string.hit)
+            MessageType.Error -> ContextCompat.getString(parentActivity, R.string.error_occurred)
         }
     }
 
@@ -90,6 +93,7 @@ class FeedbackMessageDialog(
         return when (messageType){
             MessageType.Warning -> R.drawable.ic_warning
             MessageType.Success -> R.drawable.ic_success
+            MessageType.Error -> R.drawable.ic_error
         }
     }
 }

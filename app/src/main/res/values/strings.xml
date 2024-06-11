@@ -24,6 +24,9 @@
     <string name="proceed">Prosseguir</string>
     <string name="careful">Cuidado!</string>
     <string name="hit">Sucesso</string>
+    <string name="reset_icon">reset icon</string>
+    <string name="error">Erro!</string>
+    <string name="error_occurred">Ocorreu um erro</string>
 
     <string-array name="user_experience_levels">
         <item>Starter</item>

@@ -8,7 +8,7 @@ import com.example.gymquizapp.entity.Question
 
 class QuestionProvider(private val context: Context) {
 
-    fun getQuestions(): FunctionResponse{
+    fun getQuestions(): FunctionResponse<MutableList<Question>>{
 
         val questionOneImage = ContextCompat.getDrawable(context, R.drawable.img_triceps_workout)
         val questionTwoImage = ContextCompat.getDrawable(context, R.drawable.img_abs_workout)
@@ -32,61 +32,71 @@ class QuestionProvider(private val context: Context) {
         val questionOne = Question(
             "O exercício apresentado abaixo trabalha qual grupo muscular?",
             listOf("Ombro", "Glúteos", "Triceps", "Biceps"),
-            questionOneImage!!
+            questionOneImage!!,
+            3
         )
 
         val questionTwo = Question(
             "O exercício apresentado abaixo tem como objetivo...",
             listOf("Trabalhar os braços", "Trabalhar o peitoral", "Trabalhar o ombro", "Nenhuma das alternativas"),
-            questionTwoImage!!
+            questionTwoImage!!,
+            4
         )
 
         val questionThree = Question(
             "O exercício conhecido como\"Pular corda\", tem foco em qual grupo muscular?",
             listOf("Panturrilha", "Quadriceps", "Biceps", "Ombro"),
-            questionThreeImage!!
+            questionThreeImage!!,
+            1
         )
 
         val questionFour = Question(
             "Se feito corretamente, qual dos grupos musculares a seguir são o foco do exercício abaixo?",
             listOf("Peitoral e ombro", "Peitoral e triceps", "Triceps e ombro", "Triceps e biceps"),
-            questionFourImage!!
+            questionFourImage!!,
+            2
         )
 
         val questionFive = Question(
             "No exercício mostrado abaixo, qual grupo muscular é trabalhado?",
             listOf("Triceps", "Panturrilha", "Antebraço", "Biceps"),
-            questionFiveImage!!
+            questionFiveImage!!,
+            4
         )
 
         val questionSix = Question(
             "O objetivo principal deste exercício é...",
             listOf("Aumento de força", "Resistência", "Definição muscular", "Aumento de fôlego"),
-            questionSixImage!!
+            questionSixImage!!,
+            1
         )
 
         val questionSeven = Question(
             "Esta variação de agachamento tem foco em qual grupo muscular?",
             listOf("Glúteos", "Quadriceps", "Panturilha", "Posterior de coxa"),
-            questionSevenImage!!
+            questionSevenImage!!,
+            1
         )
 
         val questionEight = Question(
             "O movimento apresentado abaixo trabalha qual grupo muscular?",
             listOf("Antebraço", "Biceps", "Triceps", "Ombro"),
-            questionEightImage!!
+            questionEightImage!!,
+            4
         )
 
         val questionNine = Question(
             "Esta variação de agachamento tem foco em qual grupo muscular?",
             listOf("Glúteos", "Quadriceps", "Panturilha", "Posterior de coxa"),
-            questionNineImage!!
+            questionNineImage!!,
+            2
         )
 
         val questionTen = Question(
             "Este exercício feito na polia, trabalha...",
             listOf("O peitoral", "As costas", "O trapézio", "O triceps"),
-            questionTenImage!!
+            questionTenImage!!,
+            2
         )
 
         val questions = mutableListOf(questionOne, questionTwo, questionThree,

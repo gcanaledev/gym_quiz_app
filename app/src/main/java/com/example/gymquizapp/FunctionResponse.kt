@@ -1,8 +1,8 @@
 package com.example.gymquizapp
 
-sealed class FunctionResponse (var success: Boolean, error: String?, responseData: Any? = null) {
+sealed class FunctionResponse <T> (var success: Boolean, val error: String?, val responseData: T? = null) {
 
-    class Error (val error: String): FunctionResponse(false, error, null)
+    class Error <T> (error: String): FunctionResponse<T>(false, error, null)
 
-    class Success (responseData: Any): FunctionResponse (true, null, responseData)
+    class Success <T> (responseData: T): FunctionResponse<T> (true, null, responseData)
 }
