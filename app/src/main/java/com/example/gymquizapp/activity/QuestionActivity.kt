@@ -19,7 +19,13 @@ class QuestionActivity : AppCompatActivity() {
     private lateinit var viewBinding: QuestionActivityBinding
     private lateinit var questions: MutableList<Question>
 
-    private var questionNumberCounter: Int = 1
+    private var questionNumberHolder: Int = 0
+    private var questionsHitsHolder: Int = 0
+
+    private var remainingQuestions: Int = 10
+    private val isLastQuestion: Boolean = remainingQuestions == 0
+    private var userHasAnswered: Boolean = false
+    private val userHasProgress: Boolean = remainingQuestions != 9 || userHasAnswered
 
     private lateinit var textViewOptions: List<TextView>
 
@@ -38,7 +44,7 @@ class QuestionActivity : AppCompatActivity() {
                     "${getQuestionsResponse.error} Deseja reiniciar a aplicação?",
                     denialButtonVisible = true,
                     { Tools.restartApplication(this) },
-                    { finishAffinity() })
+                    { finish() })
 
             return
         }
@@ -46,19 +52,41 @@ class QuestionActivity : AppCompatActivity() {
         questions = getQuestionsResponse.responseData!!
 
         viewBinding.resetButton.setOnClickListener { resetQuestions() }
-        viewBinding.returnButton.setOnClickListener { Tools.restartApplication(this) }
+        viewBinding.returnButton.setOnClickListener { returnToLogin() }
+        viewBinding.confirmationButton.setOnClickListener { confirmQuestion() }
 
         fillQuestionFields()
     }
 
+    private fun returnToLogin(){
+
+        if (userHasProgress){
+
+            FeedbackMessageDialog(MessageType.Warning, this)
+                .showFeedbackMessageDialog(
+                    getString(R.string.warning),
+                    "Caso queira prosseguir com a ação todo progresso será perdido.",
+                    denialButtonVisible = true,
+                    { Tools.restartApplication(this) })
+
+            return
+        }
+
+        Tools.restartApplication(this)
+    }
+
     private fun fillQuestionFields(){
+
+        updateQuestionsHolders()
+
+        val totalQuestions = 10
 
         with (getRandomQuestion()){
 
-            viewBinding.questionTitle.text = String.format("Pergunta número %d", questionNumberCounter)
+            viewBinding.questionTitle.text = String.format("Questão %d  ---  %d/%d", questionNumberHolder, questionsHitsHolder, totalQuestions)
             viewBinding.questionText.text = this.statement
             viewBinding.questionImage.setImageDrawable(this.image)
-            viewBinding.confirmationButton.text = if (questions.size != 1) "Próxima questão" else "Finalizar questionário"
+            viewBinding.confirmationButton.text = if (isLastQuestion) "Finalizar questionário" else "Próxima questão"
 
             textViewOptions = listOf(viewBinding.optionOne, viewBinding.optionTwo,
                 viewBinding.optionThree, viewBinding.optionFour)
@@ -66,28 +94,53 @@ class QuestionActivity : AppCompatActivity() {
             textViewOptions.forEachIndexed { index, it -> it.text = this.options[index] }
 
             textViewOptions.forEach { textView -> textView.setOnClickListener { answer(it as TextView, this) } }
+
+            if (remainingQuestions == 10)
+                return
+
+            resetOptions()
         }
     }
 
-    private fun turnTextViewToGreen(textView: TextView){
+    private fun showCorrectOption(textView: TextView){
         textView.background = ContextCompat.getDrawable(this, R.drawable.bg_correct_answer)
     }
 
-    private fun turnTextViewToRed(textView: TextView){
+    private fun showWrongOption(textView: TextView){
         textView.background = ContextCompat.getDrawable(this, R.drawable.bg_wrong_answer)
     }
 
-    private fun disableOptions(){
-        textViewOptions.forEach { it.isEnabled = false; it.isClickable = false }
+    private fun disableOptions(){ textViewOptions.forEach { it.isEnabled = false; it.isClickable = false } }
+
+    private fun resetOptions(){
+
+        userHasAnswered = false
+
+        textViewOptions.forEach {
+            it.background = ContextCompat.getDrawable(applicationContext, R.drawable.bg_rounded_quaternary)
+            it.isEnabled = true
+            it.isClickable = true
+        }
+    }
+
+    private fun updateQuestionsHolders(){
+
+        questionNumberHolder++
+        remainingQuestions--
     }
 
     private fun answer(userChosenTextView: TextView, question: Question){
 
+        userHasAnswered = true
+
         val correctOption = question.options[question.answer - 1]
 
         if (userChosenTextView.text == correctOption){
-            turnTextViewToGreen(userChosenTextView)
+
+            showCorrectOption(userChosenTextView)
             disableOptions()
+
+            questionsHitsHolder++
             return
         }
 
@@ -97,7 +150,7 @@ class QuestionActivity : AppCompatActivity() {
             FeedbackMessageDialog(MessageType.Error, this)
                 .showFeedbackMessageDialog(
                     getString(R.string.error),
-                    "Não foi possível obter a resposta correta :( \nDeseja reiniciar a aplicação?",
+                    "Não foi possível localizar a opção correta :( \nDeseja reiniciar a aplicação?",
                     denialButtonVisible = true,
                     { Tools.restartApplication(this) },
                     { finishAffinity() })
@@ -105,8 +158,9 @@ class QuestionActivity : AppCompatActivity() {
             return
         }
 
-        turnTextViewToRed(userChosenTextView)
-        turnTextViewToGreen(correctQuestionTextView)
+        showWrongOption(userChosenTextView)
+        showCorrectOption(correctQuestionTextView)
+        disableOptions()
     }
 
 
@@ -116,25 +170,42 @@ class QuestionActivity : AppCompatActivity() {
 
     private fun confirmQuestion(){
 
-        questionNumberCounter++
+        if (!userHasAnswered){
+
+            FeedbackMessageDialog(MessageType.Warning, this)
+                .showFeedbackMessageDialog(
+                    getString(R.string.not_answered_question),
+                    "Caso queira prosseguir com a ação a questão será contabilizada como errada.",
+                    denialButtonVisible = true,
+                    { fillQuestionFields() })
+
+            return
+        }
 
         fillQuestionFields()
     }
 
     private fun getRandomQuestion(): Question{
 
-        val randomQuestionNumber = (0..questions.size).random()
-
-        val randomQuestion = questions[randomQuestionNumber]
-
-        questions.removeAt(randomQuestionNumber)
+        val randomQuestion = questions.random()
+        questions.removeAt(questions.indexOf(randomQuestion))
 
         return randomQuestion
     }
 
     private fun resetQuestions(){
 
-        questionNumberCounter = 1
+        if (userHasProgress){
+
+            FeedbackMessageDialog(MessageType.Warning, this)
+                .showFeedbackMessageDialog(
+                    getString(R.string.warning),
+                    "Caso queira prosseguir com a ação todo progresso será perdido.",
+                    denialButtonVisible = true,
+                    { recreate() })
+
+            return
+        }
 
         recreate()
     }
