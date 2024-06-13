@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.gymquizapp.R
+import com.example.gymquizapp.Tools
 import com.example.gymquizapp.databinding.ResultActivityBinding
 import com.example.gymquizapp.dialog.FeedbackMessageDialog
 import com.example.gymquizapp.enumerator.MessageType
@@ -30,7 +31,7 @@ class ResultActivity : AppCompatActivity() {
         viewBinding.userDescriptionImage.setImageDrawable(getUserCorrespondingRepresentationImage())
 
         viewBinding.finishButton.setOnClickListener { finish() }
-        viewBinding.restartButton.setOnClickListener { Intent(this, LoginActivity::class.java).also { startActivity(it) }; finish() }
+        viewBinding.restartButton.setOnClickListener { Tools.restartApplication(applicationContext) }
     }
 
     private fun verifyReceivedValue(extra: Int){
