@@ -6,7 +6,7 @@
     <string name="question_image_description">question image</string>
     <string name="resultTitle">Parabéns! Você concluiu o Canale\'s Gym Quiz!</string>
     <string name="resultIconDescription">result icon description.</string>
-    <string name="resultSummary">De acordo com nossos calculos... vocé é um...</string>
+    <string name="resultSummary">De acordo com nossos cálculos... vocé é um...</string>
     <string name="finish">Finalizar</string>
     <string name="tryAgain">Retentar</string>
     <string name="welcomeTitle">Bem vindo(a) ao Canale\'s Gym Quiz!</string>
@@ -28,10 +28,12 @@
     <string name="error">Erro!</string>
     <string name="error_occurred">Ocorreu um erro</string>
     <string name="not_answered_question">Questão em branco</string>
+    <string name="not_possible_to_load_result">Não foi montar a tela de resultado final.</string>
+    <string name="resultShower">%1$d de 10</string>
 
     <string-array name="user_experience_levels">
-        <item>Starter</item>
-        <item>Intermediary</item>
+        <item>Iniciante</item>
+        <item>Intermediário</item>
         <item>Bodybuilder</item>
     </string-array>
 </resources>

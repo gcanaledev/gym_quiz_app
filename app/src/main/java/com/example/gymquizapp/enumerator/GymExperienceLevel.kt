@@ -2,7 +2,7 @@ package com.example.gymquizapp.enumerator
 
 enum class GymExperienceLevel {
 
-    Starter,
-    Intermediary,
+    Iniciante,
+    Intermediário,
     Bodybuilder
 }

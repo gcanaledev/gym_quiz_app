@@ -39,13 +39,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun playButtonOnClicked(){
 
+        val navigateToQuestionActivity = { startActivity(Intent(this, QuestionActivity::class.java)); finish() }
+
         val userChosenGymExperience = enumValueOf<GymExperienceLevel>(
             viewBinding.experienceSpinner.selectedItem.toString())
 
         when (userChosenGymExperience){
 
-            GymExperienceLevel.Starter,
-            GymExperienceLevel.Intermediary -> {
+            GymExperienceLevel.Iniciante -> {
 
                 FeedbackMessageDialog(MessageType.Warning, this)
                     .showFeedbackMessageDialog(
@@ -56,6 +57,8 @@ class LoginActivity : AppCompatActivity() {
                         { finishAffinity() })
             }
 
+            GymExperienceLevel.Intermediário -> { navigateToQuestionActivity() }
+
             GymExperienceLevel.Bodybuilder -> {
 
                 FeedbackMessageDialog(MessageType.Success, this)
@@ -65,9 +68,5 @@ class LoginActivity : AppCompatActivity() {
                         confirmationButtonAction = { navigateToQuestionActivity() })
             }
         }
-    }
-
-    private fun navigateToQuestionActivity() {
-        startActivity(Intent(this, QuestionActivity::class.java))
     }
 }

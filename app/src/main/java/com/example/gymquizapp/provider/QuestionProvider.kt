@@ -44,7 +44,7 @@ class QuestionProvider(private val context: Context) {
         )
 
         val questionThree = Question(
-            "O exercício conhecido como\"Pular corda\", tem foco em qual grupo muscular?",
+            "O exercício conhecido como \"Pular corda\", tem foco em qual grupo muscular?",
             listOf("Panturrilha", "Quadriceps", "Biceps", "Ombro"),
             questionThreeImage!!,
             1

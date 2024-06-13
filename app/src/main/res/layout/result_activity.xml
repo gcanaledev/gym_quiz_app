@@ -17,7 +17,7 @@
         android:layout_marginVertical="64dp"
         android:theme="@style/red_title_h1"
         android:textAlignment="center"
-        tools:text="@string/resultTitle" />
+        android:text="@string/resultTitle" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -30,6 +30,7 @@
         android:paddingVertical="24dp">
 
         <TextView
+            android:id="@+id/resultShower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="40dp"
@@ -43,9 +44,10 @@
             android:layout_marginVertical="8dp"
             android:textAlignment="center"
             android:theme="@style/quaternary_title_h2"
-            tools:text="@string/resultSummary" />
+            android:text="@string/resultSummary" />
 
         <TextView
+            android:id="@+id/userDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -53,6 +55,7 @@
             tools:text="Bodybuilder!" />
 
         <ImageView
+            android:id="@+id/userDescriptionImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
@@ -69,6 +72,7 @@
         android:paddingBottom="8dp">
 
         <Button
+            android:id="@+id/restartButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -80,6 +84,7 @@
             android:text="@string/tryAgain"/>
 
         <Button
+            android:id="@+id/finishButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

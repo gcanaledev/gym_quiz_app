@@ -1,5 +1,6 @@
 package com.example.gymquizapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +24,6 @@ class QuestionActivity : AppCompatActivity() {
     private var questionsHitsHolder: Int = 0
 
     private var remainingQuestions: Int = 10
-    private val isLastQuestion: Boolean = remainingQuestions == 0
     private var userHasAnswered: Boolean = false
     private val userHasProgress: Boolean = remainingQuestions != 9 || userHasAnswered
 
@@ -86,7 +86,7 @@ class QuestionActivity : AppCompatActivity() {
             viewBinding.questionTitle.text = String.format("Questão %d  ---  %d/%d", questionNumberHolder, questionsHitsHolder, totalQuestions)
             viewBinding.questionText.text = this.statement
             viewBinding.questionImage.setImageDrawable(this.image)
-            viewBinding.confirmationButton.text = if (isLastQuestion) "Finalizar questionário" else "Próxima questão"
+            viewBinding.confirmationButton.text = if (remainingQuestions == 0) "Finalizar questionário" else "Próxima questão"
 
             textViewOptions = listOf(viewBinding.optionOne, viewBinding.optionTwo,
                 viewBinding.optionThree, viewBinding.optionFour)
@@ -170,6 +170,17 @@ class QuestionActivity : AppCompatActivity() {
 
     private fun confirmQuestion(){
 
+         val isLastQuestion = remainingQuestions == 0
+
+        val navigateToResultActivity = {
+
+            Intent(this, ResultActivity::class.java)
+                .also { it.putExtra(ResultActivity.EXTRA_HITS, questionsHitsHolder)  }
+                .also { startActivity(it) }
+
+            finish()
+        }
+
         if (!userHasAnswered){
 
             FeedbackMessageDialog(MessageType.Warning, this)
@@ -177,10 +188,12 @@ class QuestionActivity : AppCompatActivity() {
                     getString(R.string.not_answered_question),
                     "Caso queira prosseguir com a ação a questão será contabilizada como errada.",
                     denialButtonVisible = true,
-                    { fillQuestionFields() })
+                    { if (isLastQuestion) navigateToResultActivity() else fillQuestionFields() })
 
             return
         }
+
+        if (isLastQuestion){ navigateToResultActivity(); return}
 
         fillQuestionFields()
     }
